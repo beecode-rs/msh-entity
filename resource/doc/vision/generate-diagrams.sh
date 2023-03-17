@@ -6,5 +6,5 @@ vision \
  --destName='vision' \
  --printIgnorePaths='[
    "src/index",
-   "src/types/type.d.ts"
+   "src/types/types.d.ts"
  ]'

@@ -16,14 +16,14 @@ blocks:
         - name: Deploy
           commands:
             - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
-            - cache restore bc-msh-util-version-$SEMAPHORE_GIT_SHA
+            - cache restore bc-msh-entity-version-$SEMAPHORE_GIT_SHA
             - export $(cat version.txt)
             - rm version.txt
             - checkout
             - git remote rm origin
-            - git remote add origin https://$GH_USER:$GH_TOKEN@github.com/beecode-rs/msh-util.git
+            - git remote add origin https://$GH_USER:$GH_TOKEN@github.com/beecode-rs/msh-entity.git
             - git checkout tags/v$VERSION -b tmp-prod-branch
-            - docker build -f .docker/Dockerfile -t bc-msh-util-deploy .
-            - docker run --rm -e CI bc-msh-util-deploy sh -c "npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN && git tag v$VERSION-prod && git push origin --tags && npm publish --access public"
+            - docker build -f .docker/Dockerfile -t bc-msh-entity-deploy .
+            - docker run --rm -e CI bc-msh-entity-deploy sh -c "npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN && npm publish --access public && git tag v$VERSION-prod && git push origin --tags"
     skip:
       when: branch != 'main'

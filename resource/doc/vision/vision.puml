@@ -1,0 +1,59 @@
+@startuml
+    folder "src/entity-cache" as src_entity_cache_c60ace52 {
+      card entity_cache_6fc31f5 [
+        EntityCache
+        ---
+        { id: string; entity: ENTITY }
+      ]
+      card entity_cache_call_back_6fc31f5 [
+        EntityCacheCallBack
+        ---
+        (cbParams: EntityCache<ENTITY>) => void
+      ]
+      card entity_cache_subscription_6fc31f5 [
+        EntityCacheSubscription
+        ---
+        { unsubscribe: () => void }
+      ]
+      class "EntityCacheMemory" as entity_cache_memory_6fc31f5 {
+        # _calculateTimeout(timeoutOffsetMs?: number): number | undefined
+        # _memory: {\n     [k: string]: {\n     entity?: ENTITY;\n     timeoutMs?: number \n} \n}
+        # _subject
+        # _timeoutExpired(timeoutMs?: number): boolean
+        getById(id: string): {\n     needToFetch?: boolean;\n     entity?: ENTITY \n}
+        set(params: EntityCache<ENTITY>,\n     timeoutOffsetMs?: number): void
+        subscribeById(id: string,\n     callback: (par: EntityCache<ENTITY>) => void): EntityCacheSubscription
+      }
+      abstract "EntityCachePromiseService" as entity_cache_promise_service_90748edb {
+        # _dao: EntityCacheMemory<ENTITY>
+        # {abstract} _entityAsync(id: ID): Promise<ENTITY>
+        # {abstract} _timeoutOffsetMs: number
+        # constructor(dao?: EntityCacheMemory<ENTITY>)
+        forceRefresh(id: ID): void
+        subscribeToEntityChangeById(id: ID,\n     callback: EntityCacheCallBack<ENTITY>): EntityCacheSubscription
+      }
+    }
+    folder "@beecode/msh-util/lib" as beecode_msh_util_lib_95bf45f2 {
+      object "TimeUtil" as time_util_e2c2a0e8 {
+        @beecode/msh-util/lib/time-util.ts
+      }
+    }
+    folder "rxjs" as rxjs_7c7990f6 {
+      object "filter" as filter_69308583 {
+        rxjs/operators.ts
+      }
+      folder "internal" as internal_2be5c17e {
+        object "Subject" as subject_cfb30004 {
+          rxjs/internal/Subject.ts
+        }
+      }
+    }
+  entity_cache_memory_6fc31f5 -up-> time_util_e2c2a0e8
+  entity_cache_memory_6fc31f5 -up-> subject_cfb30004
+  entity_cache_memory_6fc31f5 -up-> filter_69308583
+  entity_cache_memory_6fc31f5 -up-> entity_cache_6fc31f5
+  entity_cache_memory_6fc31f5 -up-> entity_cache_subscription_6fc31f5
+  entity_cache_promise_service_90748edb -up-> entity_cache_call_back_6fc31f5
+  entity_cache_promise_service_90748edb -up-> entity_cache_memory_6fc31f5
+  entity_cache_promise_service_90748edb -up-> entity_cache_subscription_6fc31f5
+@enduml
