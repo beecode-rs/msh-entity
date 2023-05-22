@@ -1,13 +1,16 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "paths": {
+      "src/*": [
+        "./src/*"
+      ]
+    }
+  },
   "exclude": [
-    "node_modules",
-    "**/*.js",
-    "**/*.spec.ts",
     "**/*.test.ts",
-    "**/__mocks__/**/*",
-    "**/*.test.tsx",
-    "**/__tests__/**/*"
-  ]
+    "**/__mocks__",
+    "**/__tests__",
+    "**/__snapshots__"
+  ],
+  "extends": "./tsconfig.json"
 }

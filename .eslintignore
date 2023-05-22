@@ -1,7 +1,10 @@
+/.base-frame-tmp
 /.idea
 /.semaphore
 /coverage
 /lib
 /node_modules
 /resource
-.eslintrc.js
+/packages
+.*.js
+/jest*.config.js
