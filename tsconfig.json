@@ -6,7 +6,9 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "lib": ["es2020"],
+    "lib": [
+      "es2020"
+    ],
     "module": "CommonJS",
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -14,9 +16,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "lib",
-    "paths": {
-      "src/*": ["src/*"]
-    },
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
@@ -24,5 +23,7 @@
     "strictNullChecks": true,
     "target": "es2017"
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"]
+  "include": [
+    "src"
+  ]
 }

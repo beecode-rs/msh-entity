@@ -9,49 +9,49 @@ export type EntityCacheCallBack<ENTITY> = (cbParams: EntityCache<ENTITY>) => voi
 export type EntityCacheSubscription = { unsubscribe: () => void }
 
 export class EntityCacheMemory<ENTITY> {
-  protected _memory: { [k: string]: { entity?: ENTITY; timeoutMs?: number } } = {}
-  protected _subject = new Subject<EntityCache<ENTITY>>()
+	protected _memory: { [k: string]: { entity?: ENTITY; timeoutMs?: number } } = {}
+	protected _subject = new Subject<EntityCache<ENTITY>>()
 
-  getById(id: string): { needToFetch?: boolean; entity?: ENTITY } {
-    const memo = this._memory[id]
+	getById(id: string): { needToFetch?: boolean; entity?: ENTITY } {
+		const memo = this._memory[id]
 
-    if (!memo) {
-      this._memory[id] = {}
+		if (!memo) {
+			this._memory[id] = {}
 
-      return { needToFetch: true }
-    }
+			return { needToFetch: true }
+		}
 
-    const needToFetch = this._timeoutExpired(memo.timeoutMs)
+		const needToFetch = this._timeoutExpired(memo.timeoutMs)
 
-    return { entity: memo.entity, needToFetch }
-  }
+		return { entity: memo.entity, needToFetch }
+	}
 
-  set(params: EntityCache<ENTITY>, timeoutOffsetMs?: number): void {
-    const { id, entity } = params
-    const timeoutMs = this._calculateTimeout(timeoutOffsetMs)
-    this._memory[id] = { entity, timeoutMs }
-    this._subject.next({ id, entity })
-  }
+	set(params: EntityCache<ENTITY>, timeoutOffsetMs?: number): void {
+		const { id, entity } = params
+		const timeoutMs = this._calculateTimeout(timeoutOffsetMs)
+		this._memory[id] = { entity, timeoutMs }
+		this._subject.next({ entity, id })
+	}
 
-  subscribeById(id: string, callback: (par: EntityCache<ENTITY>) => void): EntityCacheSubscription {
-    return this._subject.pipe(filter((o) => o.id === id)).subscribe(callback)
-  }
+	subscribeById(id: string, callback: (par: EntityCache<ENTITY>) => void): EntityCacheSubscription {
+		return this._subject.pipe(filter((o) => o.id === id)).subscribe(callback)
+	}
 
-  protected _calculateTimeout(timeoutOffsetMs?: number): number | undefined {
-    if (timeoutOffsetMs === undefined) {
-      return undefined
-    }
-    const timeUtil = new TimeUtil()
+	protected _calculateTimeout(timeoutOffsetMs?: number): number | undefined {
+		if (timeoutOffsetMs === undefined) {
+			return undefined
+		}
+		const timeUtil = new TimeUtil()
 
-    return timeUtil.dateToUnix(timeUtil.now()) + timeoutOffsetMs
-  }
+		return timeUtil.dateToUnix(timeUtil.now()) + timeoutOffsetMs
+	}
 
-  protected _timeoutExpired(timeoutMs?: number): boolean {
-    if (timeoutMs === undefined) {
-      return false
-    }
-    const timeUtil = new TimeUtil()
+	protected _timeoutExpired(timeoutMs?: number): boolean {
+		if (timeoutMs === undefined) {
+			return false
+		}
+		const timeUtil = new TimeUtil()
 
-    return timeUtil.dateToUnix(timeUtil.now()) > timeoutMs
-  }
+		return timeUtil.dateToUnix(timeUtil.now()) > timeoutMs
+	}
 }
