@@ -4,5 +4,5 @@
 /lib
 /node_modules
 /resource
-package.json
+/packages
 package-lock.json
