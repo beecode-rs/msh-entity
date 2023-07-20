@@ -1,6 +1,6 @@
-const sharedConfig = require('./jest.config.js')
+import sharedConfig from './jest.config.js'
 
-module.exports = {
+export default {
 	...sharedConfig,
 	testPathIgnorePatterns: [...sharedConfig.testPathIgnorePatterns, '/__tests__/'],
 }

@@ -41,23 +41,23 @@ module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaVersion: 'ESNext',
-		project: './tsconfig-eslint.json',
+		project: './tsconfig.eslint.json',
 		sourceType: 'module',
 	},
 	plugins: ['@typescript-eslint', 'eslint-plugin-import', 'import', 'no-only-tests', 'no-loops', 'jest', 'sort-keys-fix'],
 	rules: {
 		// ESLINT
-		'no-restricted-imports': [
-			'error',
-			{
-				patterns: [
-					{
-						group: ['**/index'],
-						message: 'Please use `.../something` instead of ``.../something/index`',
-					},
-				],
-			},
-		],
+		// 'no-restricted-imports': [
+		// 	'error',
+		// 	{
+		// 		patterns: [
+		// 			{
+		// 				group: ['**/index'],
+		// 				message: 'Please use `.../something` instead of ``.../something/index`',
+		// 			},
+		// 		],
+		// 	},
+		// ],
 
 		'prefer-arrow-callback': 'error',
 		'no-confusing-arrow': 'error',

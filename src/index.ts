@@ -1,3 +1,3 @@
-export * from 'src/entity-cache/promise-service'
+export * from '#/entity-cache/promise-service.js'
 
-export * from 'src/entity-cache/memory'
+export * from '#/entity-cache/memory.js'
