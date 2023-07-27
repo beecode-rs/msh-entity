@@ -1,4 +1,4 @@
-import { TimeUtil } from '@beecode/msh-util/time-util.js'
+import { TimeUtil } from '@beecode/msh-util/time-util'
 import { Subject } from 'rxjs/internal/Subject'
 import { filter } from 'rxjs/operators'
 

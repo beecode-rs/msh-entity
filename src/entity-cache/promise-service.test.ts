@@ -1,7 +1,6 @@
 import { jest } from '@jest/globals'
-
-import { EntityCacheSubscription } from '#/entity-cache/memory.js'
-import { EntityCachePromiseService } from '#/entity-cache/promise-service.js'
+import { EntityCacheSubscription } from 'src/entity-cache/memory'
+import { EntityCachePromiseService } from 'src/entity-cache/promise-service'
 
 describe('EntityCachePromiseService', () => {
 	const fakeMomentNow = new Date('2022-01-01T01:00:00.000Z')
