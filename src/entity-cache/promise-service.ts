@@ -1,4 +1,4 @@
-import { EntityCacheCallBack, EntityCacheMemory, EntityCacheSubscription } from 'src/entity-cache/memory'
+import { EntityCacheCallBack, EntityCacheMemory, EntityCacheSubscription } from '#/entity-cache/memory'
 
 export abstract class EntityCachePromiseService<ENTITY, ID extends string | number = string> {
 	protected readonly _dao: EntityCacheMemory<ENTITY>

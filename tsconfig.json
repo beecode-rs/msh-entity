@@ -3,7 +3,7 @@
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
 		"baseUrl": "./",
-		"composite": true,
+		"composite": false,
 		"declaration": true,
 		"declarationMap": true,
 		"emitDecoratorMetadata": true,
@@ -12,22 +12,19 @@
 		"forceConsistentCasingInFileNames": true,
 		"inlineSourceMap": true,
 		"inlineSources": true,
-		"lib": [
-			"esnext"
-		],
-		"module": "CommonJS",
-		"moduleResolution": "NodeNext",
+		"lib": ["esnext"],
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
 		"noUncheckedIndexedAccess": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"outDir": "./dist",
+		"outDir": "./dist/esm",
 		"paths": {
-			"src/*": [
-				"./src/*"
-			]
+			"#": ["./src/index.ts"],
+			"#/*": ["./src/*.ts", "./src/*/index.ts"]
 		},
 		"resolveJsonModule": true,
 		"rootDir": "./src",
@@ -37,18 +34,5 @@
 		"strictNullChecks": true,
 		"target": "ESNext"
 	},
-	"exclude": [
-		"./**/*.test.ts",
-		"./**/*.contract.ts",
-		"./**/__mocks__/*",
-		"./**/__snapshots__/*"
-	],
-	"include": [
-		"./src"
-	],
-	"references": [
-		{
-			"path": "../util"
-		}
-	]
+	"include": ["./src"]
 }

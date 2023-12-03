@@ -1,5 +1,6 @@
 import { jest } from '@jest/globals'
-import { EntityCacheMemory, EntityCacheSubscription } from 'src/entity-cache/memory'
+
+import { EntityCacheMemory, EntityCacheSubscription } from '#/entity-cache/memory'
 
 describe('EntityCacheMemory', () => {
 	const fakeMomentExpired = new Date('2022-01-01T00:00:00.000Z')
@@ -15,15 +16,11 @@ describe('EntityCacheMemory', () => {
 	const timeoutOffsetMs = 1000 * 60 * 60 // 1h
 	const fakeMomentOffsetUnix = fakeMomentNowUnix + timeoutOffsetMs
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let entityCacheMemoryInstance: EntityCacheMemory<any>
+	let entityCacheMemoryInstance: EntityCacheMemory<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	beforeEach(() => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		jest.useFakeTimers('modern' as any)
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		entityCacheMemoryInstance = new EntityCacheMemory<any>()
-		jest.setSystemTime(fakeMomentNow.getTime())
+		entityCacheMemoryInstance = new EntityCacheMemory<any>() // eslint-disable-line @typescript-eslint/no-explicit-any
+		jest.useFakeTimers({ now: fakeMomentNow.getTime() })
 	})
 
 	afterEach(() => jest.resetAllMocks())

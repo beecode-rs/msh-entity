@@ -1,6 +1,7 @@
 import { jest } from '@jest/globals'
-import { EntityCacheSubscription } from 'src/entity-cache/memory'
-import { EntityCachePromiseService } from 'src/entity-cache/promise-service'
+
+import { EntityCacheSubscription } from '#/entity-cache/memory'
+import { EntityCachePromiseService } from '#/entity-cache/promise-service'
 
 describe('EntityCachePromiseService', () => {
 	const fakeMomentNow = new Date('2022-01-01T01:00:00.000Z')
@@ -39,9 +40,7 @@ describe('EntityCachePromiseService', () => {
 
 	beforeEach(() => {
 		subscriptions = []
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		jest.useFakeTimers('modern' as any)
-		jest.setSystemTime(fakeMomentNow.getTime())
+		jest.useFakeTimers({ now: fakeMomentNow.getTime() })
 		promiseServiceInstance = new PromiseServiceImplementation()
 	})
 
