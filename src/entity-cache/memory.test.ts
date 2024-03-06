@@ -80,7 +80,7 @@ describe('EntityCacheMemory', () => {
 			entityCacheMemoryInstance.set({ entity: entity_1, id: entity_1.id.toString() })
 
 			expect(fake_fn1).toHaveBeenCalledTimes(1)
-			expect(fake_fn1).toHaveBeenCalledOnceWith({ entity: entity_1, id: '1' })
+			expect(fake_fn1).toHaveBeenCalledWith({ entity: entity_1, id: '1' })
 			expect(fake_fn2).not.toHaveBeenCalled()
 			expect(fake_fn3).not.toHaveBeenCalled()
 
