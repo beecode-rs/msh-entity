@@ -23,7 +23,9 @@ describe('EntityCacheMemory', () => {
 		jest.useFakeTimers({ now: fakeMomentNow.getTime() })
 	})
 
-	afterEach(() => jest.resetAllMocks())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
 	afterAll(() => jest.useRealTimers())
 
 	describe('getById', () => {

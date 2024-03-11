@@ -17,22 +17,22 @@
 	"exports": {
 		".": {
 			"import": {
-				"types": "./dist/esm/index.d.ts",
-				"default": "./dist/esm/index.js"
+				"default": "./dist/esm/index.js",
+				"types": "./dist/esm/index.d.ts"
 			},
 			"require": {
-				"types": "./dist/cjs/index.d.ts",
-				"default": "./dist/cjs/index.js"
+				"default": "./dist/cjs/index.js",
+				"types": "./dist/cjs/index.d.ts"
 			}
 		},
 		"./*": {
 			"import": {
-				"types": "./dist/esm/*.d.ts",
-				"default": "./dist/esm/*.js"
+				"default": "./dist/esm/*.js",
+				"types": "./dist/esm/*.d.ts"
 			},
 			"require": {
-				"types": "./dist/cjs/*.d.ts",
-				"default": "./dist/cjs/*.js"
+				"default": "./dist/cjs/*.js",
+				"types": "./dist/cjs/*.d.ts"
 			}
 		},
 		"./dist/cjs/*": "./dist/cjs/*.js",
@@ -66,7 +66,7 @@
 		"init": "concurrently -c auto 'npm:init:*'",
 		"init:git-config": "git config include.path ./.git-config",
 		"init:husky": "npx husky install",
-		"jest": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+		"jest": "npx jest",
 		"lint": "npm run lint-prettier && npm run lint-eslint && npm run lint-json",
 		"lint-eslint": "eslint ./ --quiet",
 		"lint-eslint-fix": "npm run lint-eslint -- --fix",
@@ -137,7 +137,6 @@
 		"@semantic-release/git": "10.0.1",
 		"@semantic-release/github": "9.2.4",
 		"@semantic-release/release-notes-generator": "12.1.0",
-		"@types/jest": "29.5.10",
 		"@types/node": "20.10.2",
 		"@typescript-eslint/eslint-plugin": "6.13.1",
 		"@typescript-eslint/parser": "6.13.1",
