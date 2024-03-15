@@ -58,7 +58,7 @@ module.exports = {
 		// 		],
 		// 	},
 		// ],
-
+		'@typescript-eslint/prefer-ts-expect-error': 'off',
 		'prefer-arrow-callback': 'error',
 		'no-confusing-arrow': 'error',
 		'no-constant-condition': 'error',
