@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals'
 
-import { EntityCacheMemory, EntityCacheSubscription } from '#/entity-cache/memory'
+import { EntityCacheMemory, EntityCacheSubscription } from '#src/entity-cache/memory'
 
 describe('EntityCacheMemory', () => {
 	const fakeMomentExpired = new Date('2022-01-01T00:00:00.000Z')
