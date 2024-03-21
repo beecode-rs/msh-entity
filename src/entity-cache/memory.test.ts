@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals'
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 
 import { EntityCacheMemory, EntityCacheSubscription } from '#src/entity-cache/memory'
 
@@ -26,7 +26,9 @@ describe('EntityCacheMemory', () => {
 	afterEach(() => {
 		jest.resetAllMocks()
 	})
-	afterAll(() => jest.useRealTimers())
+	afterAll(() => {
+		jest.useRealTimers()
+	})
 
 	describe('getById', () => {
 		it('should return needToFetch flag if entity not in collection', () => {

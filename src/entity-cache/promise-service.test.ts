@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals'
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 
 import { EntityCacheSubscription } from '#src/entity-cache/memory'
 import { EntityCachePromiseService } from '#src/entity-cache/promise-service'
@@ -48,7 +48,9 @@ describe('EntityCachePromiseService', () => {
 		subscriptions.forEach((s) => s.unsubscribe())
 		jest.resetAllMocks()
 	})
-	afterAll(() => jest.useRealTimers())
+	afterAll(() => {
+		jest.useRealTimers()
+	})
 
 	describe('subscribeToEntityChangeById', () => {
 		it('should not call callback if entity not in memory', () => {
