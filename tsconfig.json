@@ -12,7 +12,9 @@
 		"forceConsistentCasingInFileNames": true,
 		"inlineSourceMap": true,
 		"inlineSources": true,
-		"lib": ["ESNext"],
+		"lib": [
+			"ESNext"
+		],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"noFallthroughCasesInSwitch": true,
@@ -23,9 +25,9 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"outDir": "./dist",
-		"resolvePackageJsonImports": true,
 		"pretty": true,
 		"resolveJsonModule": true,
+		"resolvePackageJsonImports": true,
 		"rootDir": "./src",
 		"skipLibCheck": true,
 		"strict": true,
@@ -34,7 +36,11 @@
 		"target": "ESNext",
 		"traceResolution": false
 	},
-	"include": ["./*.*", "./src", "./test"],
+	"include": [
+		"./*.*",
+		"./src",
+		"./test"
+	],
 	"ts-node": {
 		"esm": true,
 		"experimentalSpecifierResolution": "node"
