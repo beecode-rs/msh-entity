@@ -1,7 +1,7 @@
 /.idea
 /.semaphore
 /coverage
-/lib
+/dist
 /node_modules
 /resource
 /packages
