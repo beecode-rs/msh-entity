@@ -1,4 +1,6 @@
-import { EntityCacheMemory, EntityCacheSubscription } from 'src/entity-cache/memory'
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
+
+import { EntityCacheMemory, EntityCacheSubscription } from '#src/entity-cache/memory'
 
 describe('EntityCacheMemory', () => {
 	const fakeMomentExpired = new Date('2022-01-01T00:00:00.000Z')
@@ -14,16 +16,19 @@ describe('EntityCacheMemory', () => {
 	const timeoutOffsetMs = 1000 * 60 * 60 // 1h
 	const fakeMomentOffsetUnix = fakeMomentNowUnix + timeoutOffsetMs
 
-	let entityCacheMemoryInstance: EntityCacheMemory<any>
+	let entityCacheMemoryInstance: EntityCacheMemory<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	beforeEach(() => {
-		jest.useFakeTimers('modern' as any)
-		entityCacheMemoryInstance = new EntityCacheMemory<any>()
-		jest.setSystemTime(fakeMomentNow.getTime())
+		entityCacheMemoryInstance = new EntityCacheMemory<any>() // eslint-disable-line @typescript-eslint/no-explicit-any
+		jest.useFakeTimers({ now: fakeMomentNow.getTime() })
 	})
 
-	afterEach(() => jest.resetAllMocks())
-	afterAll(() => jest.useRealTimers())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
+	afterAll(() => {
+		jest.useRealTimers()
+	})
 
 	describe('getById', () => {
 		it('should return needToFetch flag if entity not in collection', () => {
@@ -79,7 +84,7 @@ describe('EntityCacheMemory', () => {
 			entityCacheMemoryInstance.set({ entity: entity_1, id: entity_1.id.toString() })
 
 			expect(fake_fn1).toHaveBeenCalledTimes(1)
-			expect(fake_fn1).toHaveBeenCalledOnceWith({ entity: entity_1, id: '1' })
+			expect(fake_fn1).toHaveBeenCalledWith({ entity: entity_1, id: '1' })
 			expect(fake_fn2).not.toHaveBeenCalled()
 			expect(fake_fn3).not.toHaveBeenCalled()
 
