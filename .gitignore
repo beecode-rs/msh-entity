@@ -6,3 +6,4 @@
 /packages
 /test/node_modules
 /test/dist
+*.tsbuildinfo

@@ -1,11 +1,14 @@
-import { EntityCacheSubscription } from 'src/entity-cache/memory'
-import { EntityCachePromiseService } from 'src/entity-cache/promise-service'
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
+
+import { EntityCacheSubscription } from '#src/entity-cache/memory'
+import { EntityCachePromiseService } from '#src/entity-cache/promise-service'
 
 describe('EntityCachePromiseService', () => {
 	const fakeMomentNow = new Date('2022-01-01T01:00:00.000Z')
 	let subscriptions: EntityCacheSubscription[]
 
 	class PromiseServiceImplementation extends EntityCachePromiseService<{ id: number; value: number }, number> {
+		// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 		constructor() {
 			super()
 		}
@@ -37,8 +40,7 @@ describe('EntityCachePromiseService', () => {
 
 	beforeEach(() => {
 		subscriptions = []
-		jest.useFakeTimers('modern' as any)
-		jest.setSystemTime(fakeMomentNow.getTime())
+		jest.useFakeTimers({ now: fakeMomentNow.getTime() })
 		promiseServiceInstance = new PromiseServiceImplementation()
 	})
 
@@ -46,7 +48,9 @@ describe('EntityCachePromiseService', () => {
 		subscriptions.forEach((s) => s.unsubscribe())
 		jest.resetAllMocks()
 	})
-	afterAll(() => jest.useRealTimers())
+	afterAll(() => {
+		jest.useRealTimers()
+	})
 
 	describe('subscribeToEntityChangeById', () => {
 		it('should not call callback if entity not in memory', () => {
