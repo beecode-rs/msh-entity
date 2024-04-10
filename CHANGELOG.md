@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/beecode-rs/msh-entity/compare/v1.0.0...v1.0.1) (2024-04-10)
+
+
+### Bug Fixes
+
+* update packages.json ([895f659](https://github.com/beecode-rs/msh-entity/commit/895f659bbb33063c3b9bbf6ecfa369ad666038c4))
+
 # [1.0.0](https://github.com/beecode-rs/msh-entity/compare/v0.1.2...v1.0.0) (2024-04-07)
 
 
