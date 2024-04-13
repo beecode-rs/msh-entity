@@ -34,7 +34,15 @@ export class EntityCacheMemory<ENTITY> {
 	}
 
 	subscribeById(id: string, callback: (par: EntityCache<ENTITY>) => void): EntityCacheSubscription {
-		return this._subject.pipe(filter((o) => o.id === id)).subscribe(callback)
+		return this._subject
+			.pipe(
+				filter((o) => {
+					return o.id === id
+				})
+			)
+			.subscribe((p) => {
+				callback(p)
+			})
 	}
 
 	protected _calculateTimeout(timeoutOffsetMs?: number): number | undefined {
