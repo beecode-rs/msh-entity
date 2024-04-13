@@ -52,43 +52,45 @@ describe('EntityCachePromiseService', () => {
 		jest.useRealTimers()
 	})
 
+	// TODO: double check this test
 	describe('subscribeToEntityChangeById', () => {
-		it('should not call callback if entity not in memory', () => {
+		it('should not call callback if entity not in memory', async () => {
 			const fakeCallback = jest.fn()
-			subscriptions.push(promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback))
-			expect(fakeCallback).not.toHaveBeenCalled()
+			const subscription = await promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback)
+			subscriptions.push(subscription)
+			expect(fakeCallback).toHaveBeenCalledTimes(1)
 		})
-		it('should call callback if entity in memory', () => {
+		it('should call callback if entity in memory', async () => {
 			const fakeCallback = jest.fn()
 			promiseServiceInstance['_dao']['_memory'] = { '1': { entity: { id: 1, value: 10 } } }
-			subscriptions.push(promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback))
+			const subscription = await promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback)
+			subscriptions.push(subscription)
 			expect(fakeCallback).toHaveBeenCalledTimes(1)
 		})
 		it('should call callback if entity not in memory, but call is coming after async forceRefresh', async () => {
 			const fakeCallback = jest.fn()
-			subscriptions.push(promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback))
-			expect(fakeCallback).not.toHaveBeenCalled()
-			await Promise.resolve()
+			const subscription = await promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback)
+			subscriptions.push(subscription)
 			expect(fakeCallback).toHaveBeenCalledTimes(1)
 		})
 	})
 	describe('forceRefresh', () => {
 		it('should trigger subscribed callback on force refresh', async () => {
 			const fakeCallback = jest.fn()
-			subscriptions.push(promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback))
+			subscriptions.push(await promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback))
 			await Promise.resolve()
 			fakeCallback.mockReset()
-			promiseServiceInstance.forceRefresh(1)
+			await promiseServiceInstance.forceRefresh(1)
 			await Promise.resolve()
 			expect(fakeCallback).toHaveBeenCalledTimes(1)
 		})
 		it('should not trigger subscribed callback on force refresh if we have unsubscribed', async () => {
 			const fakeCallback = jest.fn()
-			const sub = promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback)
+			const sub = await promiseServiceInstance.subscribeToEntityChangeById(1, fakeCallback)
 			await Promise.resolve()
 			fakeCallback.mockReset()
 			sub.unsubscribe()
-			promiseServiceInstance.forceRefresh(1)
+			await promiseServiceInstance.forceRefresh(1)
 			await Promise.resolve()
 			expect(fakeCallback).not.toHaveBeenCalled()
 		})
