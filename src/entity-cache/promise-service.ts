@@ -16,7 +16,7 @@ export abstract class EntityCachePromiseService<ENTITY, ID extends string | numb
 	 * @param {EntityCacheCallBack<ENTITY>} callback -
 	 * @returns {EntityCacheSubscription}
 	 */
-	subscribeToEntityChangeById(id: ID, callback: EntityCacheCallBack<ENTITY>): EntityCacheSubscription {
+	async subscribeToEntityChangeById(id: ID, callback: EntityCacheCallBack<ENTITY>): Promise<EntityCacheSubscription> {
 		const idString = id.toString()
 		const subscription = this._dao.subscribeById(idString, callback)
 		const { entity, needToFetch = false } = this._dao.getById(idString)
@@ -24,14 +24,14 @@ export abstract class EntityCachePromiseService<ENTITY, ID extends string | numb
 			callback({ entity, id: idString })
 		}
 		if (needToFetch) {
-			this.forceRefresh(id)
+			await this.forceRefresh(id)
 		}
 
 		return subscription
 	}
 
-	forceRefresh(id: ID): void {
-		this._entityAsync(id).then((entity) => {
+	async forceRefresh(id: ID): Promise<void> {
+		await this._entityAsync(id).then((entity) => {
 			return this._dao.set({ entity, id: id.toString() }, this._timeoutOffsetMs)
 		})
 	}
