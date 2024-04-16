@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/beecode-rs/msh-entity/compare/v1.0.1...v1.0.2) (2024-04-16)
+
+
+### Bug Fixes
+
+* bump @commitlint/cli from 19.2.1 to 19.2.2 ([#9](https://github.com/beecode-rs/msh-entity/issues/9)) ([ad7c5b0](https://github.com/beecode-rs/msh-entity/commit/ad7c5b0e558b487248f6ce167a440ce4476e30f7))
+* update package.json ([c4378b5](https://github.com/beecode-rs/msh-entity/commit/c4378b56806921c91a279fca8ba7621ad6ab2006))
+
 ## [1.0.1](https://github.com/beecode-rs/msh-entity/compare/v1.0.0...v1.0.1) (2024-04-10)
 
 
