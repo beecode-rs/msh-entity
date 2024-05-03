@@ -1,4 +1,4 @@
-import { EntityCacheMemory } from '../entity-cache/memory.js';
+import { EntityCacheMemory } from '#src/entity-cache/memory';
 export class EntityCachePromiseService {
     _dao;
     constructor(dao) {

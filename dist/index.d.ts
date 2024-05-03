@@ -1,3 +1,3 @@
-export * from './entity-cache/promise-service.js';
-export * from './entity-cache/memory.js';
+export * from '#src/entity-cache/promise-service';
+export * from '#src/entity-cache/memory';
 //# sourceMappingURL=index.d.ts.map

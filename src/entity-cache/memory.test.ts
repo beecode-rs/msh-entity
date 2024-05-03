@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
+import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { EntityCacheMemory, EntityCacheSubscription } from '#src/entity-cache/memory'
 
@@ -20,14 +20,11 @@ describe('EntityCacheMemory', () => {
 
 	beforeEach(() => {
 		entityCacheMemoryInstance = new EntityCacheMemory<any>() // eslint-disable-line @typescript-eslint/no-explicit-any
-		jest.useFakeTimers({ now: fakeMomentNow.getTime() })
+		vi.useFakeTimers({ now: fakeMomentNow.getTime() })
 	})
 
-	afterEach(() => {
-		jest.resetAllMocks()
-	})
 	afterAll(() => {
-		jest.useRealTimers()
+		vi.useRealTimers()
 	})
 
 	describe('getById', () => {
@@ -73,9 +70,9 @@ describe('EntityCacheMemory', () => {
 		})
 
 		it('should trigger subscription on set entity by the same Id that we are listening to', () => {
-			const fake_fn1 = jest.fn()
-			const fake_fn2 = jest.fn()
-			const fake_fn3 = jest.fn()
+			const fake_fn1 = vi.fn()
+			const fake_fn2 = vi.fn()
+			const fake_fn3 = vi.fn()
 
 			subscriptions.push(entityCacheMemoryInstance.subscribeById('1', fake_fn1))
 			subscriptions.push(entityCacheMemoryInstance.subscribeById('2', fake_fn2))
@@ -97,8 +94,8 @@ describe('EntityCacheMemory', () => {
 		})
 
 		it('should not call subscribed function after it is unsubscribed', () => {
-			const fake_fn1_1 = jest.fn()
-			const fake_fn1_2 = jest.fn()
+			const fake_fn1_1 = vi.fn()
+			const fake_fn1_2 = vi.fn()
 
 			subscriptions.push(entityCacheMemoryInstance.subscribeById('1', fake_fn1_1))
 			const subs2 = entityCacheMemoryInstance.subscribeById('1', fake_fn1_2)
