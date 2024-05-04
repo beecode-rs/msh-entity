@@ -110,7 +110,8 @@
 		}
 	},
 	"dependencies": {
-		"@beecode/msh-util": "2.0.6",
+		"@beecode/msh-config": "1.0.0",
+		"@beecode/msh-util": "2.0.7",
 		"rxjs": "7.8.1"
 	},
 	"devDependencies": {
@@ -130,18 +131,9 @@
 		"@semantic-release/github": "10.0.3",
 		"@semantic-release/release-notes-generator": "13.0.0",
 		"@types/node": "20.12.8",
-		"@typescript-eslint/eslint-plugin": "7.8.0",
-		"@typescript-eslint/parser": "7.8.0",
 		"@vitest/coverage-v8": "1.6.0",
 		"commitizen": "4.3.0",
 		"concurrently": "8.2.2",
-		"eslint": "8.57.0",
-		"eslint-config-prettier": "8.10.0",
-		"eslint-plugin-import": "2.29.1",
-		"eslint-plugin-no-loops": "0.3.0",
-		"eslint-plugin-no-only-tests": "3.1.0",
-		"eslint-plugin-prettier": "5.1.3",
-		"eslint-plugin-sort-keys-fix": "1.1.2",
 		"husky": "9.0.11",
 		"json-sort-cli": "4.0.3",
 		"lint-staged": "15.2.2",
