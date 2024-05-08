@@ -31,26 +31,6 @@ blocks:
             - docker load -i bc-msh-entity.tar
             - docker run --rm -e CODECOV_TOKEN bc-msh-entity sh -c 'npm run test-coverage-unit && npm run test-coverage-unit-publish'
 
-  - name: Bump Version
-    task:
-      secrets:
-        - name: bc-git-secret
-        - name: bc-npm-secret
-      jobs:
-        - name: Build
-          commands:
-            - cache restore bc-msh-entity-docker-image-$SEMAPHORE_GIT_SHA
-            - docker load -i bc-msh-entity.tar
-            - touch version.txt
-            - sudo chown -R packer:packer version.txt
-            - docker run --rm -v ./version.txt:/usr/app/version.txt -e GH_TOKEN -e NPM_TOKEN -e GH_USER -e CI bc-msh-entity npm run npm-semantic-release
-            - cat version.txt
-            - cache store bc-msh-entity-version-$SEMAPHORE_GIT_SHA version.txt
-    skip:
-      when: branch != 'main'
-
 promotions:
-  - name: Alpha Deploy
-    pipeline_file: alpha.yml
-  - name: Production Deploy
-    pipeline_file: prod.yml
+  - name: Bump Version
+    pipeline_file: bump-version.yml
