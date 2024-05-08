@@ -10,7 +10,7 @@ export declare abstract class EntityCachePromiseService<ENTITY, ID extends strin
      * @param {EntityCacheCallBack<ENTITY>} callback -
      * @returns {EntityCacheSubscription}
      */
-    subscribeToEntityChangeById(id: ID, callback: EntityCacheCallBack<ENTITY>): EntityCacheSubscription;
-    forceRefresh(id: ID): void;
+    subscribeToEntityChangeById(id: ID, callback: EntityCacheCallBack<ENTITY>): Promise<EntityCacheSubscription>;
+    forceRefresh(id: ID): Promise<void>;
 }
 //# sourceMappingURL=promise-service.d.ts.map
