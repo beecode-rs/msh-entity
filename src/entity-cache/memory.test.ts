@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { EntityCacheMemory, EntityCacheSubscription } from '#src/entity-cache/memory'
+import { EntityCacheMemory, type EntityCacheSubscription } from '#src/entity-cache/memory'
 
 describe('EntityCacheMemory', () => {
 	const fakeMomentExpired = new Date('2022-01-01T00:00:00.000Z')

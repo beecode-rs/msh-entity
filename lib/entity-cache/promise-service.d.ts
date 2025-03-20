@@ -1,4 +1,4 @@
-import { EntityCacheCallBack, EntityCacheMemory, EntityCacheSubscription } from '../entity-cache/memory.js';
+import { type EntityCacheCallBack, EntityCacheMemory, type EntityCacheSubscription } from '../entity-cache/memory.js';
 export declare abstract class EntityCachePromiseService<ENTITY, ID extends string | number = string> {
     protected readonly _dao: EntityCacheMemory<ENTITY>;
     protected abstract readonly _timeoutOffsetMs?: number;

@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { EntityCacheSubscription } from '#src/entity-cache/memory'
+import { type EntityCacheSubscription } from '#src/entity-cache/memory'
 import { EntityCachePromiseService } from '#src/entity-cache/promise-service'
 
 describe('EntityCachePromiseService', () => {
@@ -8,11 +8,11 @@ describe('EntityCachePromiseService', () => {
 	let subscriptions: EntityCacheSubscription[]
 
 	class PromiseServiceImplementation extends EntityCachePromiseService<{ id: number; value: number }, number> {
-		// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 		constructor() {
 			super()
 		}
 
+		// eslint-disable-next-line @typescript-eslint/require-await
 		protected async _entityAsync(id: number): Promise<{ id: number; value: number }> {
 			const dummyCollection: { id: number; value: number }[] = [
 				{ id: 1, value: 10 },
