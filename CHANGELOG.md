@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/beecode-rs/msh-entity/compare/v0.2.0...v0.2.1) (2025-03-20)
+
+
+### Bug Fixes
+
+* update Node.js version, add Prettier and ESLint configurations ([be87061](https://github.com/beecode-rs/msh-entity/commit/be870616b7333d0460567751484d38b576d16428))
+
 # [0.2.0](https://github.com/beecode-rs/msh-entity/compare/v0.1.2...v0.2.0) (2024-05-08)
 
 
