@@ -66,7 +66,9 @@ describe('EntityCacheMemory', () => {
 		})
 
 		afterEach(() => {
-			subscriptions.forEach((s) => s.unsubscribe())
+			subscriptions.forEach((s) => {
+				s.unsubscribe()
+			})
 		})
 
 		it('should trigger subscription on set entity by the same Id that we are listening to', () => {

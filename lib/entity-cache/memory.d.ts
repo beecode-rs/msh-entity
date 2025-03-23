@@ -8,12 +8,10 @@ export type EntityCacheSubscription = {
     unsubscribe: () => void;
 };
 export declare class EntityCacheMemory<ENTITY> {
-    protected _memory: {
-        [k: string]: {
-            entity?: ENTITY;
-            timeoutMs?: number;
-        };
-    };
+    protected _memory: Record<string, {
+        entity?: ENTITY;
+        timeoutMs?: number;
+    }>;
     protected _subject: Subject<EntityCache<ENTITY>>;
     getById(id: string): {
         needToFetch?: boolean;

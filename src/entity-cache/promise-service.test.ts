@@ -8,6 +8,7 @@ describe('EntityCachePromiseService', () => {
 	let subscriptions: EntityCacheSubscription[]
 
 	class PromiseServiceImplementation extends EntityCachePromiseService<{ id: number; value: number }, number> {
+		// eslint-disable-next-line @typescript-eslint/no-useless-constructor
 		constructor() {
 			super()
 		}
@@ -45,7 +46,9 @@ describe('EntityCachePromiseService', () => {
 	})
 
 	afterEach(() => {
-		subscriptions.forEach((s) => s.unsubscribe())
+		subscriptions.forEach((s) => {
+			s.unsubscribe()
+		})
 	})
 	afterAll(() => {
 		vi.useRealTimers()

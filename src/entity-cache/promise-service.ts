@@ -32,7 +32,7 @@ export abstract class EntityCachePromiseService<ENTITY, ID extends string | numb
 
 	async forceRefresh(id: ID): Promise<void> {
 		await this._entityAsync(id).then((entity) => {
-			return this._dao.set({ entity, id: id.toString() }, this._timeoutOffsetMs)
+			this._dao.set({ entity, id: id.toString() }, this._timeoutOffsetMs)
 		})
 	}
 }

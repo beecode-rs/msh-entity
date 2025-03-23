@@ -9,7 +9,7 @@ export type EntityCacheCallBack<ENTITY> = (cbParams: EntityCache<ENTITY>) => voi
 export type EntityCacheSubscription = { unsubscribe: () => void }
 
 export class EntityCacheMemory<ENTITY> {
-	protected _memory: { [k: string]: { entity?: ENTITY; timeoutMs?: number } } = {}
+	protected _memory: Record<string, { entity?: ENTITY; timeoutMs?: number }> = {}
 	protected _subject = new Subject<EntityCache<ENTITY>>()
 
 	getById(id: string): { needToFetch?: boolean; entity?: ENTITY } {
