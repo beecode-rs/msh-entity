@@ -1,3 +1,10 @@
+## [0.2.3](https://github.com/beecode-rs/msh-entity/compare/v0.2.2...v0.2.3) (2025-03-23)
+
+
+### Bug Fixes
+
+* refactor ESLint configuration and update dependencies ([3a1b2ec](https://github.com/beecode-rs/msh-entity/commit/3a1b2ec6b5d8ce220faf216ada6fbad7ba9dcf07))
+
 ## [0.2.2](https://github.com/beecode-rs/msh-entity/compare/v0.2.1...v0.2.2) (2025-03-20)
 
 
