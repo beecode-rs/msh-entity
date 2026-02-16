@@ -1,3 +1,10 @@
+## [0.2.5](https://github.com/beecode-rs/msh-entity/compare/v0.2.4...v0.2.5) (2026-02-16)
+
+
+### Bug Fixes
+
+* update build config and dependencies ([dec7afd](https://github.com/beecode-rs/msh-entity/commit/dec7afd12af7e3cd12ea83058ce50e341890e297))
+
 ## [0.2.4](https://github.com/beecode-rs/msh-entity/compare/v0.2.3...v0.2.4) (2025-03-27)
 
 
