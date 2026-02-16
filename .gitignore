@@ -2,8 +2,12 @@
 /!.idea/runConfigurations
 /.base-frame-template
 /coverage
+/dist
+/lib
 /node_modules
 /packages
+/resource/ai
 /test/node_modules
 /test/dist
 *.tsbuildinfo
+.history

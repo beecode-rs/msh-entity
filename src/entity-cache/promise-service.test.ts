@@ -1,7 +1,7 @@
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { type EntityCacheSubscription } from '#src/entity-cache/memory'
-import { EntityCachePromiseService } from '#src/entity-cache/promise-service'
+import { type EntityCacheSubscription } from '#src/entity-cache/memory.js'
+import { EntityCachePromiseService } from '#src/entity-cache/promise-service.js'
 
 describe('EntityCachePromiseService', () => {
 	const fakeMomentNow = new Date('2022-01-01T01:00:00.000Z')
