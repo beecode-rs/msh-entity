@@ -1,15 +1,21 @@
-import tsconfigPaths from 'vite-tsconfig-paths'
+import path from 'node:path'
+
 import { coverageConfigDefaults, defineConfig } from 'vitest/config'
 
 export default defineConfig({
-	plugins: [tsconfigPaths()],
+	resolve: {
+		alias: {
+			'#src': path.resolve(import.meta.dirname, 'src'),
+		},
+		tsconfigPaths: true,
+	},
 	test: {
 		coverage: {
-			exclude: ['lib/**', ...coverageConfigDefaults.exclude],
+			exclude: [...coverageConfigDefaults.exclude],
 		},
 		mockReset: true,
 		passWithNoTests: true,
-		setupFiles: ['./src/__tests__/index-jest-setup.ts'],
+		setupFiles: ['./src/__tests__/index-vitest-setup.ts'],
 		watch: false,
 	},
 })

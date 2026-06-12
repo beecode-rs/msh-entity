@@ -3,7 +3,7 @@ name: Test
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu2004
+    os_image: ubuntu2404
 
 blocks:
 
@@ -18,7 +18,7 @@ blocks:
             - cache restore bc-msh-entity-docker-image-$SEMAPHORE_GIT_SHA
             - docker load -i bc-msh-entity.tar
             - touch version.txt
-            - sudo chown -R packer:packer version.txt
+            - sudo chown -R builder:builder version.txt
             - docker run --rm -v ./version.txt:/usr/app/version.txt -e GH_TOKEN -e NPM_TOKEN -e GH_USER -e CI bc-msh-entity npm run npm-semantic-release
             - cat version.txt
             - cache store bc-msh-entity-version-$SEMAPHORE_GIT_SHA version.txt

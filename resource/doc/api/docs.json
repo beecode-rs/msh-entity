@@ -1618,16 +1618,16 @@
 		},
 		{
 			"id": 1,
-			"name": "index-jest-setup",
+			"name": "index-vitest-setup",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"sources": [
 				{
-					"fileName": "index-jest-setup.ts",
+					"fileName": "index-vitest-setup.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/beecode-rs/msh-entity/blob/f63d8a8/src/index-jest-setup.ts#L1"
+					"url": "https://github.com/beecode-rs/msh-entity/blob/f63d8a8/src/index-vitest-setup.ts#L1"
 				}
 			]
 		}
@@ -1646,7 +1646,7 @@
 	"packageName": "@beecode/msh-entity",
 	"symbolIdMap": {
 		"1": {
-			"sourceFileName": "src/index-jest-setup.ts",
+			"sourceFileName": "src/index-vitest-setup.ts",
 			"qualifiedName": ""
 		},
 		"2": {

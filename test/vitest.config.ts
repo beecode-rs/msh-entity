@@ -1,12 +1,11 @@
-import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-	plugins: [tsconfigPaths()],
+	resolve: { tsconfigPaths: true },
 	test: {
 		mockReset: true,
 		passWithNoTests: true,
-		setupFiles: ['./index-jest-setup.ts'],
+		setupFiles: ['../src/__tests__/index-vitest-setup.ts'],
 		watch: false,
 	},
 })
