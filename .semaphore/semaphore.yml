@@ -15,7 +15,7 @@ blocks:
           commands:
             - checkout
             - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
-            - docker build -f ./resource/docker/Dockerfile -t bc-msh-entity .
+            - npm run docker-build
             - docker save -o bc-msh-entity.tar bc-msh-entity
             - cache store bc-msh-entity-docker-image-$SEMAPHORE_GIT_SHA bc-msh-entity.tar
 
