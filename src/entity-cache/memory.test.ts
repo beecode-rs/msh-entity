@@ -55,7 +55,9 @@ describe('EntityCacheMemory', () => {
 		})
 		it('should set new entity to memory with timout', () => {
 			entityCacheMemoryInstance.set({ entity: entity_1, id: entity_1.id.toString() }, timeoutOffsetMs)
-			expect(entityCacheMemoryInstance['_memory']).toEqual({ '1': { entity: entity_1, timeoutMs: fakeMomentOffsetUnix } })
+			expect(entityCacheMemoryInstance['_memory']).toEqual({
+				'1': { entity: entity_1, timeoutMs: fakeMomentOffsetUnix },
+			})
 		})
 	})
 
